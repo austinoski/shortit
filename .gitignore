@@ -1,0 +1,9 @@
+venv
+__pycache__
+*.pyc
+*.pyo
+pipfile
+Pipfile.Lock
+db.sqlite3
+*.sqlite3
+*.db
