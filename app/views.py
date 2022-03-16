@@ -40,4 +40,5 @@ class HomeView(View):
         session_key = cleaned_data["key"]
         if len(cleaned_data["custom_text"]) > 0:
             session_key = cleaned_data["custom_text"]
+        cleaned_data["short_url"] = request.build_absolute_uri(session_key)
         request.session[session_key] = cleaned_data
