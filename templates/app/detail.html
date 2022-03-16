@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header h1 text-center">Short.IT URL Detail</div>
+    <div class="card-body">
+        <table class="table table-bordered">
+            <tr>
+                <td>Original URL</td>
+                <td>{{ shortit.url }}</td>
+            </tr>
+            <tr>
+                <td>Shortened URL</td>
+                <td>{{ shortit.short_url }}</td>
+            </tr>
+            <tr>
+                <td>Custom Text</td>
+                <td>{{ shortit.custom_text }}</td>
+            </tr>
+            <tr>
+                <td>Unique Key</td>
+                <td>{{ shortit.key }}</td>
+            </tr>
+            <tr>
+                <td>Expiration</td>
+                <td>{{ shortit.expire }} Hrs</td>
+            </tr>
+            <tr>
+                <td>Click Count</td>
+                <td>0</td>
+            </tr>
+        </table>
+        <a href="" class="btn btn-secondary">Toggle Click Counter</a>
+        <a href="{{ shortit.short_url }}" class="btn btn-primary">View</a>
+        <a href="" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+{% endblock content %}

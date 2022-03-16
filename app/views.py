@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import View
+from django.http import HttpResponse
 
 from .forms import ShortItForm
 from .customs import generate_unique_key
@@ -42,3 +43,21 @@ class HomeView(View):
             session_key = cleaned_data["custom_text"]
         cleaned_data["short_url"] = request.build_absolute_uri(session_key)
         request.session[session_key] = cleaned_data
+
+
+class RedirectView(View):
+    template_name = "app/detail.html"
+
+    def get(self, request, key, format=None):
+        shortit = self.get_object(request, key)
+        if shortit is None:
+            return HttpResponse("<h1>404: Page Not Found</h1>")
+        return render(request, self.template_name, {"shortit": shortit})
+    
+    def get_object(self, request, key):
+        shortit = None
+        if request.user.is_authenticated:
+            pass # Database model not implemented
+        else:
+            shortit = request.session.get(key, None)
+        return shortit
