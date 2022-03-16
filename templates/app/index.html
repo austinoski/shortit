@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <div class="card-header h1 text-center">Short.IT</div>
+    <div class="card-body">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="urlinput" class="form-label">URL</label>
+                <input type="url" name="url" class="form-control" id="urlinput" aria-describedby="urlHelp">
+                <div id="urlHelp" class="form-text">Enter the url you want to shorten</div>
+            </div>
+            <div class="mb-3">
+                <label for="customTextInput" class="form-label">Custom Text</label>
+                <input type="text" name="custom_text" class="form-control" id="customTextInput">
+            </div>
+            <div class="mb-3">
+                <label for="expireValueInput" class="form-label">Expiration</label>
+                <input type="number" name="expire" value="1" class="form-control" id="expireValueInput">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-header h3 text-center">Shortened URLs</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <td>Shortened URL</td>
+                    <td>Action1</td>
+                    <td>Action2</td>
+                    <td>Action3</td>
+                </thead>
+                {% for s in shortit %}
+                <tr>
+                    <td><a href="{{ s.url }}">{{ s.url }}</a></td>
+                    <td><a href="" class="btn btn-primary">View</a></td>
+                    <td><a href="" class="btn btn-primary">Copy</a></td>
+                    <td><a href="" class="btn btn-primary">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}
