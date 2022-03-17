@@ -47,11 +47,12 @@ class HomeView(View):
 
 class DetailView(View):
     template_name = "app/detail.html"
+    error_404_template = "error/404.html"
 
     def get(self, request, key, format=None):
         shortit = self.get_object(request, key)
         if shortit is None:
-            return HttpResponse("<h1>404: Page Not Found</h1>")
+            return render(request, self.error_404_template)
         return render(request, self.template_name, {"shortit": shortit})
     
     def get_object(self, request, key):
@@ -64,10 +65,12 @@ class DetailView(View):
 
 
 class RedirectView(View):
+    error_404_template = "error/404.html"
+
     def get(self, request, key, format=None):
         shortit = self.get_object(request, key)
         if shortit is None:
-            return HttpResponse("<h1>404: Page Not Found</h1>")
+            return render(request, self.error_404_template)
         return redirect(shortit["url"])
     
     def get_object(self, request, key):

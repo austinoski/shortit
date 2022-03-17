@@ -8,11 +8,12 @@
     <body>
         <div class="container">
             <div class="card mt-2">
-                <div class="card-header h1 text-center">Short.IT</div>
+                <div class="card-header h1 text-center">
+                    <a href="{% url 'homepage' %}">Short.IT</a></div>
                 <small class="card-header text-center">Low Budget URL Shortener</small>
                 {% block content %}
                 {% endblock content %}
-                <div class="card-footer">
+                <div class="card-footer text-center">
                     <p>Copywrite &copy 2022 Austitech All Rights Reserved</p>
                 </div>
             </div>
