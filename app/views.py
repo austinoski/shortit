@@ -61,3 +61,19 @@ class DetailView(View):
         else:
             shortit = request.session.get(key, None)
         return shortit
+
+
+class RedirectView(View):
+    def get(self, request, key, format=None):
+        shortit = self.get_object(request, key)
+        if shortit is None:
+            return HttpResponse("<h1>404: Page Not Found</h1>")
+        return redirect(shortit["url"])
+    
+    def get_object(self, request, key):
+        shortit = None
+        if request.user.is_authenticated:
+            pass # Database model not implemented
+        else:
+            shortit = request.session.get(key, None)
+        return shortit
