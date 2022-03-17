@@ -45,7 +45,7 @@ class HomeView(View):
         request.session[session_key] = cleaned_data
 
 
-class RedirectView(View):
+class DetailView(View):
     template_name = "app/detail.html"
 
     def get(self, request, key, format=None):
