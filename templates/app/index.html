@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="card">
-    <div class="card-header h1 text-center">Short.IT</div>
+<div class="">
     <div class="card-body">
         <form action="" method="post">
             {% csrf_token %}
@@ -13,12 +12,14 @@
             <div class="mb-3">
                 <label for="customTextInput" class="form-label">Custom Text</label>
                 <input type="text" name="custom_text" class="form-control" id="customTextInput">
+                <div id="customTextHelp" class="form-text">Enter an optional custom text</div>
             </div>
             <div class="mb-3">
                 <label for="expireValueInput" class="form-label">Expiration</label>
                 <input type="number" name="expire" value="1" class="form-control" id="expireValueInput">
+                <div id="expireValueHelp" class="form-text">Enter number of days for url to expire</div>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">ShortIT Now!</button>
         </form>
     </div>
     <div class="card">
